@@ -13,15 +13,15 @@ window.onload = () => {
 
   imageContainer.addEventListener('mousedown', ev => {
     console.log(ev);
-    translateY = (ev.offsetY - translateY) + halfHeight;
-    translateX = (ev.offsetX - translateX) + halfWidth;
+    translateY = halfHeight - ev.offsetY;
+    translateX = halfWidth - ev.offsetX;
 
     // const ( imageX, imageY ) = (
     //   ev.offsetX * lastScale,
     //   ev.offsetY * lastScale
     // );
 
-    // lastScale += 0.5;
+    lastScale += 0.5;
     img.style.transform = `scale(${lastScale}) translateX(${translateX}px) translateY(${translateY}px)`;
     // ev.target.style.transformOrigin = `${ev.offsetX}px ${ev.offsetY}px`;
   });
