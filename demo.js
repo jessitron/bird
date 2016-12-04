@@ -3,6 +3,7 @@ window.onload = () => {
 
   const imageContainer = document.querySelector('.imageContainer');
   const img = imageContainer.querySelector('img');
+  const label = document.querySelector('.container label')
   let lastScale = 1;
   let translateX = 0;
   let translateY = 0;
@@ -45,6 +46,8 @@ window.onload = () => {
 
 
     img.style.transform = `scale(${lastScale}) translateX(${translateX}px) translateY(${translateY}px)`;
+    label.style.transform = `scale(${lastScale}) translateX(${translateX}px) translateY(${translateY}px)`;
+    
     // ev.target.style.transformOrigin = `${ev.offsetX}px ${ev.offsetY}px`;
   });
 }
