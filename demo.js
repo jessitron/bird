@@ -19,10 +19,23 @@ window.onload = () => {
     lastScale *= 2;
 
     maxTranslateY = (lastScale - 1) * halfHeight / lastScale
-    console.log(`I would like to translate it by ${translateY} but the image is only ${maxTranslateY} biggish`)
     if (translateY > maxTranslateY)
     {
       translateY = maxTranslateY
+    }
+    if (translateY < (0 - maxTranslateY))
+    {
+      translateY = 0 - maxTranslateY
+    }
+
+     maxTranslateX = (lastScale - 1) * halfWidth / lastScale
+    if (translateX > maxTranslateX)
+    {
+      translateX = maxTranslateX
+    }
+    if (translateX < (0 - maxTranslateX))
+    {
+      translateX = 0 - maxTranslateX
     }
 
     // const ( imageX, imageY ) = (
