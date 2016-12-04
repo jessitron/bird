@@ -4,9 +4,9 @@ body {
 
 .container {
   position: relative;
-  width: 50vw;
-  margin: 25vh auto;
-  height: 50vh;
+  width: 80vw;
+  margin: 10vh auto;
+  height: 80vh;
   border: 1px solid black;
 
 }

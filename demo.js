@@ -16,12 +16,21 @@ window.onload = () => {
     translateY = halfHeight - ev.offsetY;
     translateX = halfWidth - ev.offsetX;
 
+    lastScale *= 2;
+
+    maxTranslateY = (lastScale - 1) * halfHeight / lastScale
+    console.log(`I would like to translate it by ${translateY} but the image is only ${maxTranslateY} biggish`)
+    if (translateY > maxTranslateY)
+    {
+      translateY = maxTranslateY
+    }
+
     // const ( imageX, imageY ) = (
     //   ev.offsetX * lastScale,
     //   ev.offsetY * lastScale
     // );
 
-    lastScale += 0.5;
+
     img.style.transform = `scale(${lastScale}) translateX(${translateX}px) translateY(${translateY}px)`;
     // ev.target.style.transformOrigin = `${ev.offsetX}px ${ev.offsetY}px`;
   });
