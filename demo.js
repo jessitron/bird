@@ -3,13 +3,30 @@ window.onload = () => {
 
   const imageContainer = document.querySelector('.container');
   const img = imageContainer.querySelector('.imageContainer');
+  const speakLabel = imageContainer.querySelector('label#speak')
   let lastScale = 1;
   let translateX = 0;
   let translateY = 0;
 
-  const containerStyle = window.getComputedStyle(imageContainer);
-  const halfHeight = parseInt(containerStyle.height, 10) / 2;
-  const halfWidth = parseInt(containerStyle.width, 10) / 2;
+   containerStyle = window.getComputedStyle(imageContainer);
+   halfHeight = parseInt(containerStyle.height, 10) / 2;
+   halfWidth = parseInt(containerStyle.width, 10) / 2;
+
+   const speakLabelYPct = 120 / halfHeight;
+   const speakLabelXPct = 660 / halfWidth;
+  speakLabel.style.top = "120px";
+  speakLabel.style.left = "660px";
+
+
+  window.addEventListener('resize', ev => {
+      console.log("resize detected!!")
+         containerStyle = window.getComputedStyle(imageContainer);
+   halfHeight = parseInt(containerStyle.height, 10) / 2;
+   halfWidth = parseInt(containerStyle.width, 10) / 2;
+
+     speakLabel.style.top = `${speakLabelYPct * halfHeight}px`;
+  speakLabel.style.left = `${speakLabelXPct * halfWidth}px`;
+  });
 
   imageContainer.addEventListener('mousedown', ev => {
     console.log(ev);
@@ -24,7 +41,7 @@ window.onload = () => {
       translateY = maxTranslateY
     }
     if (translateY < (0 - maxTranslateY))
-    {
+    { 
       translateY = 0 - maxTranslateY
     }
 
