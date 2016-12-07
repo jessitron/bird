@@ -21,9 +21,11 @@ body {
 .imageContainer img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .imageContainer {
   transition: transform 1s ease-in-out;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }

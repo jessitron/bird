@@ -39,21 +39,10 @@ window.onload = () => {
    halfHeight = parseInt(imageStyle.height, 10) / 2;
    halfWidth = parseInt(imageStyle.width, 10) / 2;
 
-   const speakLabelYPct = 120 / halfHeight;
-   const speakLabelXPct = 660 / halfWidth;
-  speakLabel.style.top = "120px";
-  speakLabel.style.left = "660px";
-
-
-  window.addEventListener('resize', ev => {
-      console.log("resize detected!!")
-   imageStyle = window.getComputedStyle(img);
-   halfHeight = parseInt(imageStyle.height, 10) / 2;
-   halfWidth = parseInt(imageStyle.width, 10) / 2;
-
-     speakLabel.style.top = `${speakLabelYPct * halfHeight}px`;
-  speakLabel.style.left = `${speakLabelXPct * halfWidth}px`;
-  });
+  const speakLabelYPct = 120 / halfHeight;
+  const speakLabelXPct = 660 / halfWidth;
+  speakLabel.style.top = "20%";
+  speakLabel.style.left = "50.3%";
 
   container.addEventListener('mousedown', ev => {
     console.log(ev);
