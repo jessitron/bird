@@ -1,16 +1,43 @@
+function describeSizing(window) {
+
+  return function(element) {
+    var description = "Element "
+    if (element.className) {
+      description += "." + element.className;
+    }
+    if (element.id) {
+      description += "#" + element.id;
+    }
+    description += ":"
+
+    var style = window.getComputedStyle(element);
+
+    description += " height=" + style.height;
+    description += " width=" + style.width;
+
+    return description;
+  }
+}
+
+
 window.onload = () => {
   console.log('hello');
+  describe = describeSizing(window);
 
   const container = document.querySelector('.container');
-  const img = container.querySelector('.imageContainer');
+  console.log(describe(container));
+  const imageContainer = container.querySelector('.imageContainer')
+  console.log(describe(imageContainer));
+  const img = container.querySelector('img');
+  console.log(describe(img));
   const speakLabel = container.querySelector('label#speak')
   let lastScale = 1;
   let translateX = 0;
   let translateY = 0;
 
-   containerStyle = window.getComputedStyle(container);
-   halfHeight = parseInt(containerStyle.height, 10) / 2;
-   halfWidth = parseInt(containerStyle.width, 10) / 2;
+   imageStyle = window.getComputedStyle(img);
+   halfHeight = parseInt(imageStyle.height, 10) / 2;
+   halfWidth = parseInt(imageStyle.width, 10) / 2;
 
    const speakLabelYPct = 120 / halfHeight;
    const speakLabelXPct = 660 / halfWidth;
@@ -20,9 +47,9 @@ window.onload = () => {
 
   window.addEventListener('resize', ev => {
       console.log("resize detected!!")
-         containerStyle = window.getComputedStyle(container);
-   halfHeight = parseInt(containerStyle.height, 10) / 2;
-   halfWidth = parseInt(containerStyle.width, 10) / 2;
+   imageStyle = window.getComputedStyle(img);
+   halfHeight = parseInt(imageStyle.height, 10) / 2;
+   halfWidth = parseInt(imageStyle.width, 10) / 2;
 
      speakLabel.style.top = `${speakLabelYPct * halfHeight}px`;
   speakLabel.style.left = `${speakLabelXPct * halfWidth}px`;
@@ -61,7 +88,7 @@ window.onload = () => {
     // );
 
 
-    img.style.transform = `scale(${lastScale}) translateX(${translateX}px) translateY(${translateY}px)`;
+    imageContainer.style.transform = `scale(${lastScale}) translateX(${translateX}px) translateY(${translateY}px)`;
 
     // ev.target.style.transformOrigin = `${ev.offsetX}px ${ev.offsetY}px`;
   });
