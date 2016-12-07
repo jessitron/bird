@@ -46,8 +46,17 @@ window.onload = () => {
 
   container.addEventListener('mousedown', ev => {
     console.log(ev);
-    translateY = halfHeight - ev.offsetY;
-    translateX = halfWidth - ev.offsetX;
+
+    var clickX = ev.offsetX;
+    var clickY = ev.offsetY;
+    // what if they clicked on the label??????
+    if (ev.target instanceof HTMLLabelElement) {
+      clickX += ev.target.offsetLeft;
+      clickY += ev.target.offsetTop
+    }
+
+    translateY = halfHeight - clickY;
+    translateX = halfWidth - clickX;
 
     lastScale *= 2;
 
